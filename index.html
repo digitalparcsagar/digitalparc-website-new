@@ -152,14 +152,14 @@
     .logo-img.tall { height: 56px; }
 
     /* ══ THIS IS THE SYSTEM ══ */
-    .system-section { background: #f0f4f8; padding: 100px 60px; }
+    .system-section { background: #071627; padding: 88px 60px 80px; }
     .system-inner { max-width: 1280px; margin: 0 auto; }
     .system-header { text-align: center; margin-bottom: 56px; }
     .system-header h2 {
-      font-size: clamp(36px, 4.5vw, 58px); font-weight: 700; color: var(--ink);
-      letter-spacing: -1px; line-height: 1.05; margin-bottom: 16px;
+      font-size: clamp(36px, 5vw, 56px); font-weight: 800; color: #fff;
+      letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 12px;
     }
-    .system-header p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.6; }
+    .system-header p { font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.42); line-height: 1.6; }
 
     /* Arrow strip */
     .arrow-strip { display: flex; margin-bottom: 16px; }
@@ -190,7 +190,7 @@
       box-shadow: 0 2px 8px rgba(15,27,48,0.06);
       transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
-    .stage-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(15,27,48,0.12); }
+    .stage-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
     .stage-card h3 { font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.45; margin-bottom: 10px; }
     .stage-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
     .stage-rule { height: 1px; background: #eef1f6; margin-bottom: 14px; }
@@ -215,46 +215,79 @@
     .stage-card:nth-child(3) .stage-link { color: var(--c3); }
     .stage-card:nth-child(4) .stage-link { color: var(--c4); }
 
-    .system-bottom { text-align: center; padding: 36px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-    .system-bottom p { font-size: 20px; font-weight: 500; color: var(--ink); line-height: 1.55; }
-    .btn-cyan {
-      display: inline-flex; align-items: center; gap: 8px; padding: 15px 34px;
-      background: var(--cyan); color: var(--navy); font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
-      border-radius: 100px; box-shadow: 0 4px 20px rgba(0,180,230,0.3); transition: transform 0.2s, box-shadow 0.2s;
+    .system-bottom {
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      padding: 26px 36px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
     }
-    .btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,230,0.4); }
+    .system-bottom p { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.3px; line-height: 1.4; max-width: 560px; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px;
+      background: #fff; color: var(--ink); font-size: 13.5px; font-weight: 700;
+      border-radius: 100px; white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+    .btn-cta svg { width: 14px; height: 14px; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ══ OUR CORE SERVICES ══ */
-    .core-services-section { background: var(--white); padding: 100px 60px; }
-    .cs-inner { max-width: 1280px; margin: 0 auto; }
-    .cs-header { margin-bottom: 48px; }
-    .cs-header h2 { font-size: clamp(30px, 3.5vw, 48px); font-weight: 700; color: var(--ink); letter-spacing: -0.5px; line-height: 1.05; margin-bottom: 12px; }
-    .cs-header-sub { font-size: 16px; color: var(--muted); line-height: 1.6; }
+    .core-services-section { background: #f0f4f8; padding: 96px 60px; position: relative; overflow: hidden; }
+    .geo-1 { position: absolute; top: -140px; right: -140px; width: 440px; height: 440px; border-radius: 50%; border: 70px solid rgba(91,79,207,0.045); pointer-events: none; }
+    .geo-2 { position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; border-radius: 50%; border: 50px solid rgba(0,151,122,0.05); pointer-events: none; }
+    .cs-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+    .cs-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 52px; gap: 32px; }
+    .cs-header h2 { font-size: clamp(36px, 4.5vw, 54px); font-weight: 800; color: var(--ink); letter-spacing: -1.5px; line-height: 1.05; }
+    .cs-header-sub { font-size: 15px; color: var(--muted); max-width: 280px; line-height: 1.65; text-align: right; }
 
-    .cs-grid { display: flex; gap: 16px; align-items: stretch; }
+    .cs-grid { display: flex; gap: 18px; align-items: stretch; }
     .cs-card {
-      background: var(--navy); border-radius: 20px; padding: 36px 28px;
+      background: #fff; border: 1px solid #e4eaf2; border-radius: 20px; padding: 36px 30px;
       display: flex; flex-direction: column; flex: 1; min-width: 0;
-      transition: flex 0.38s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s ease, transform 0.28s ease;
-      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(15,27,48,0.05); cursor: pointer;
+      transition: flex 0.38s cubic-bezier(0.4,0,0.2,1), background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
     }
-    .cs-card:hover { flex: 1.6; box-shadow: 0 20px 52px rgba(15,27,48,0.22); transform: translateY(-4px); }
+    .cs-card:hover { flex: 1.6; background: var(--ink); border-color: var(--ink); box-shadow: 0 20px 52px rgba(15,27,48,0.22); }
     .cs-grid:has(.cs-card:hover) .cs-card:not(:hover) { flex: 0.82; }
-    .cs-icon {
-      width: 46px; height: 46px; border-radius: 12px; margin-bottom: 24px;
-      display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1);
-    }
-    .cs-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--cyan); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .cs-card h3 { font-family: 'Roboto', sans-serif; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 0; margin-bottom: 12px; }
-    .cs-card p { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.55); flex: 1; margin-bottom: 28px; }
-    .cs-arr {
-      width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center; margin-top: auto;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .cs-card:hover .cs-arr { border-color: var(--cyan); background: rgba(0,180,230,0.12); }
-    .cs-arr svg { width: 14px; height: 14px; fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .cs-card:hover .cs-arr svg { stroke: var(--cyan); }
+    .cs-icon { width: 46px; height: 46px; border-radius: 12px; margin-bottom: 26px; display: flex; align-items: center; justify-content: center; transition: background 0.28s ease; }
+    .cs-card.card-growth .cs-icon { background: rgba(102,85,212,0.1); }
+    .cs-card.card-seo    .cs-icon { background: rgba(26,127,212,0.1); }
+    .cs-card.card-web    .cs-icon { background: rgba(0,168,138,0.1); }
+    .cs-card.card-ads    .cs-icon { background: rgba(0,175,192,0.1); }
+    .cs-card:hover.card-growth .cs-icon { background: rgba(102,85,212,0.22); }
+    .cs-card:hover.card-seo    .cs-icon { background: rgba(26,127,212,0.22); }
+    .cs-card:hover.card-web    .cs-icon { background: rgba(0,168,138,0.22); }
+    .cs-card:hover.card-ads    .cs-icon { background: rgba(0,175,192,0.22); }
+    .cs-icon svg { width: 22px; height: 22px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-card.card-growth .cs-icon svg { stroke: var(--c1); }
+    .cs-card.card-seo    .cs-icon svg { stroke: var(--c2); }
+    .cs-card.card-web    .cs-icon svg { stroke: var(--c3); }
+    .cs-card.card-ads    .cs-icon svg { stroke: var(--c4); }
+    .cs-card h3 { font-family: 'Roboto', sans-serif; font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.4px; margin-bottom: 12px; transition: color 0.25s ease; }
+    .cs-card:hover h3 { color: #fff; }
+    .cs-card p { font-size: 13.5px; line-height: 1.7; color: var(--muted); flex: 1; margin-bottom: 28px; transition: color 0.25s ease; }
+    .cs-card:hover p { color: rgba(255,255,255,0.52); }
+    .cs-link { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; margin-top: auto; transition: color 0.25s ease, gap 0.2s; }
+    .cs-link:hover { gap: 11px; }
+    .cs-card.card-growth .cs-link { color: var(--c1); }
+    .cs-card.card-seo    .cs-link { color: var(--c2); }
+    .cs-card.card-web    .cs-link { color: var(--c3); }
+    .cs-card.card-ads    .cs-link { color: var(--c4); }
+    .cs-card:hover.card-growth .cs-link { color: #b3aaff; }
+    .cs-card:hover.card-seo    .cs-link { color: #74b9ff; }
+    .cs-card:hover.card-web    .cs-link { color: #55efc4; }
+    .cs-card:hover.card-ads    .cs-link { color: #81ecec; }
+    .cs-arr { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.25s ease; }
+    .cs-card.card-growth .cs-arr { background: rgba(102,85,212,0.1); }
+    .cs-card.card-seo    .cs-arr { background: rgba(26,127,212,0.1); }
+    .cs-card.card-web    .cs-arr { background: rgba(0,168,138,0.1); }
+    .cs-card.card-ads    .cs-arr { background: rgba(0,175,192,0.1); }
+    .cs-card:hover .cs-arr { background: rgba(255,255,255,0.1); }
+    .cs-arr svg { width: 12px; height: 12px; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-card.card-growth .cs-arr svg { stroke: var(--c1); }
+    .cs-card.card-seo    .cs-arr svg { stroke: var(--c2); }
+    .cs-card.card-web    .cs-arr svg { stroke: var(--c3); }
+    .cs-card.card-ads    .cs-arr svg { stroke: var(--c4); }
+    .cs-card:hover .cs-arr svg { stroke: rgba(255,255,255,0.75); }
 
     /* ══ TESTIMONIALS ══ */
     .testimonials-section { background: var(--light); padding: 100px 60px; }
@@ -516,51 +549,53 @@
       </div>
 
       <div class="system-bottom reveal">
-        <p>This isn't just a collection of services.<br>It's a system designed to grow your business.</p>
-        <a href="#" class="btn-cyan">Schedule a Call</a>
+        <p>This isn't a collection of services.<br>It's a system designed to grow your business.</p>
+        <a href="https://www.digitalparc.com/contact/" class="btn-cta"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Schedule a Call</a>
       </div>
     </div>
   </section>
 
   <!-- ════ OUR CORE SERVICES ════ -->
   <section class="core-services-section">
+    <div class="geo-1"></div>
+    <div class="geo-2"></div>
     <div class="cs-inner">
       <div class="cs-header">
         <h2 class="reveal">Our Core Services</h2>
         <p class="cs-header-sub reveal reveal-delay-1">Four core capabilities, one connected system. Every engagement is built around what your business needs to grow.</p>
       </div>
       <div class="cs-grid">
-        <div class="cs-card reveal">
+        <div class="cs-card card-growth reveal">
           <div class="cs-icon">
             <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
           </div>
           <h3>Growth System</h3>
           <p>Align marketing, sales, and data into a clear roadmap focused on sustainable, measurable business growth.</p>
-          <a href="https://www.digitalparc.com/growth-system/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://www.digitalparc.com/growth-system/" class="cs-link">Learn more <span class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
-        <div class="cs-card reveal reveal-delay-1">
+        <div class="cs-card card-seo reveal reveal-delay-1">
           <div class="cs-icon">
             <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
-          <h3>SEO & AI Search Visibility</h3>
+          <h3>SEO &amp; AI Search Visibility</h3>
           <p>Increase your visibility across Google and AI-powered search by creating authoritative content that attracts qualified buyers and drives consistent organic growth.</p>
-          <a href="https://www.digitalparc.com/seo/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://www.digitalparc.com/seo/" class="cs-link">Learn more <span class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
-        <div class="cs-card reveal reveal-delay-2">
+        <div class="cs-card card-web reveal reveal-delay-2">
           <div class="cs-icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
           <h3>Websites</h3>
           <p>Create high-performing websites that look sharp, load fast, and are built to convert from the ground up.</p>
-          <a href="https://www.digitalparc.com/website-design/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://www.digitalparc.com/website-design/" class="cs-link">Learn more <span class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
-        <div class="cs-card reveal reveal-delay-3">
+        <div class="cs-card card-ads reveal reveal-delay-3">
           <div class="cs-icon">
             <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
           <h3>Paid Advertising</h3>
           <p>Drive immediate, high-intent traffic through targeted ad campaigns designed to convert and scale efficiently.</p>
-          <a href="https://www.digitalparc.com/paid-advertising/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://www.digitalparc.com/paid-advertising/" class="cs-link">Learn more <span class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
         </div>
       </div>
     </div>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Gold Standard in SEO &amp; Digital Marketing | DigitalParc</title>
+  <meta name="description" content="DigitalParc helps businesses grow through SEO, paid advertising, website design, and digital marketing strategies built to drive revenue." />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #071627;
+      --navy2: #0d2240;
+      --cyan:  #00b4e6;
+      --blue:  #1a7fd4;
+      --c1: #6655d4;
+      --c2: #1a7fd4;
+      --c3: #00a88a;
+      --c4: #00afc0;
+      --ink:   #0f1b30;
+      --muted: #64748b;
+      --light: #f0f4f8;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--white); overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; text-wrap: balance; }
+    p { text-wrap: pretty; orphans: 3; widows: 3; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── FADE-IN ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ══ NAV ══ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 60px; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .nav.scrolled { background: rgba(7,22,39,0.97); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(255,255,255,0.07); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: rgba(255,255,255,0.72); letter-spacing: 0.01em; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      padding: 10px 22px; background: var(--cyan); color: var(--navy) !important;
+      font-weight: 700 !important; border-radius: 100px; font-size: 13px !important;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ══ HERO — RESULTS DRIVEN ══ */
+    .hero {
+      min-height: 100vh; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      background: #000;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('images/hero-bg.jpg') center / cover no-repeat;
+      opacity: 0.45;
+      transform: scale(1.04);
+      animation: slowzoom 14s ease-in-out infinite alternate;
+    }
+    /* Fallback gradient when image isn't loaded */
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, #1a0a00 0%, #000 60%);
+    }
+    @keyframes slowzoom { from { transform: scale(1.04); } to { transform: scale(1.0); } }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.5) 100%);
+    }
+    .hero-inner { position: relative; z-index: 2; width: 100%; max-width: 1400px; padding: 0 60px; text-align: center; }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(64px, 11vw, 136px); font-weight: 800; color: #fff;
+      letter-spacing: -2px; line-height: 0.94; text-transform: uppercase; margin-bottom: 28px;
+      text-align: center; width: 100%;
+    }
+    .hero-sub {
+      display: flex; align-items: center; justify-content: center; gap: 0;
+      font-size: clamp(12px, 1.5vw, 15px); letter-spacing: 4px; font-weight: 500;
+      color: rgba(255,255,255,0.65); text-transform: uppercase; margin-bottom: 44px;
+    }
+    .hero-sub span { padding: 0 14px; }
+    .hero-sub .sep { color: rgba(255,255,255,0.3); }
+    .hero-cta {
+      display: inline-flex; align-items: center; padding: 14px 36px;
+      border: 1.5px solid rgba(255,255,255,0.55); color: #fff;
+      font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      border-radius: 100px; transition: background 0.25s, border-color 0.25s;
+    }
+    .hero-cta:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      z-index: 2; animation: bounce 2.2s ease-in-out infinite;
+    }
+    @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+    /* ══ GROWTH ENGINE ══ */
+    .growth-section { background: var(--white); padding: 100px 60px 88px; }
+    .growth-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.05fr; gap: 76px; align-items: center; }
+    .growth-video-wrap {
+      position: relative; border-radius: 16px; overflow: hidden; cursor: pointer;
+      aspect-ratio: 16/10; background: var(--navy2);
+      box-shadow: 0 24px 64px rgba(15,27,48,0.18);
+    }
+    .growth-video-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s; }
+    .growth-video-wrap:hover img { transform: scale(1.04); }
+    .video-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 68px; height: 68px; border-radius: 50%;
+      background: rgba(0,180,230,0.9); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.35); transition: transform 0.2s; z-index: 2;
+    }
+    .growth-video-wrap:hover .video-play-btn { transform: translate(-50%,-50%) scale(1.08); }
+    .video-play-btn svg { width: 22px; height: 22px; fill: #fff; margin-left: 4px; }
+
+    .growth-right h2 {
+      font-size: clamp(26px, 3vw, 40px); font-weight: 700; color: var(--ink);
+      letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 18px;
+    }
+    .growth-right p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    .growth-right p strong { color: var(--ink); font-weight: 600; }
+    .growth-checklist { list-style: none; margin: 18px 0 0; display: flex; flex-direction: column; gap: 9px; }
+    .growth-checklist li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink); font-weight: 500; }
+    .check-dot {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; background: var(--cyan);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: center;
+    }
+
+    /* Trust bar */
+    .trust-bar { background: #f8fafc; border-top: 1px solid #e8edf4; border-bottom: 1px solid #e8edf4; padding: 36px 60px; }
+    .trust-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 36px; flex-wrap: wrap; }
+    .trust-item img { height: 44px; width: auto; object-fit: contain; display: block; }
+    .trust-divider { width: 1px; height: 40px; background: #d1dae6; flex-shrink: 0; }
+    .trust-badges { display: flex; align-items: center; gap: 16px; }
+    .trust-badges img { height: 80px; width: auto; object-fit: contain; }
+    .logo-img { height: 48px; width: auto; object-fit: contain; }
+    .logo-img.tall { height: 56px; }
+
+    /* ══ THIS IS THE SYSTEM ══ */
+    .system-section { background: #f0f4f8; padding: 100px 60px; }
+    .system-inner { max-width: 1280px; margin: 0 auto; }
+    .system-header { text-align: center; margin-bottom: 56px; }
+    .system-header h2 {
+      font-size: clamp(36px, 4.5vw, 58px); font-weight: 700; color: var(--ink);
+      letter-spacing: -1px; line-height: 1.05; margin-bottom: 16px;
+    }
+    .system-header p { font-size: 18px; font-weight: 400; color: var(--muted); line-height: 1.6; }
+
+    /* Arrow strip */
+    .arrow-strip { display: flex; margin-bottom: 16px; }
+    .arrow-step {
+      flex: 1; height: 56px; display: flex; align-items: center; gap: 12px;
+      padding: 0 22px 0 30px;
+      clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%);
+    }
+    .arrow-step:first-child { padding-left: 22px; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); }
+    .arrow-step:last-child { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 18px 50%); }
+    .arrow-step:not(:first-child) { margin-left: -1px; }
+    .arrow-step:nth-child(1) { background: var(--c1); }
+    .arrow-step:nth-child(2) { background: var(--c2); }
+    .arrow-step:nth-child(3) { background: var(--c3); }
+    .arrow-step:nth-child(4) { background: var(--c4); }
+    .arrow-num {
+      width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; font-family: 'Inter', sans-serif;
+    }
+    .arrow-label { font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.3px; font-family: 'Inter', sans-serif; }
+
+    /* Stage cards */
+    .pipeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 36px; }
+    .stage-card {
+      background: #fff; border-radius: 16px; padding: 28px 24px;
+      display: flex; flex-direction: column;
+      box-shadow: 0 2px 8px rgba(15,27,48,0.06);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .stage-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(15,27,48,0.12); }
+    .stage-card h3 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.45; margin-bottom: 10px; }
+    .stage-body { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+    .stage-rule { height: 1px; background: #eef1f6; margin-bottom: 14px; }
+    .stage-card ul { list-style: none; margin-bottom: 20px; flex: 1; }
+    .stage-card ul li {
+      font-size: 12.5px; color: var(--muted); padding: 6px 0;
+      display: flex; align-items: center; gap: 9px; border-bottom: 1px solid #f1f5f9;
+    }
+    .stage-card ul li:last-child { border-bottom: none; }
+    .li-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+    .stage-card:nth-child(1) .li-dot { background: var(--c1); }
+    .stage-card:nth-child(2) .li-dot { background: var(--c2); }
+    .stage-card:nth-child(3) .li-dot { background: var(--c3); }
+    .stage-card:nth-child(4) .li-dot { background: var(--c4); }
+    .stage-link {
+      font-size: 12.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;
+      margin-top: auto; transition: gap 0.2s;
+    }
+    .stage-link:hover { gap: 8px; }
+    .stage-card:nth-child(1) .stage-link { color: var(--c1); }
+    .stage-card:nth-child(2) .stage-link { color: var(--c2); }
+    .stage-card:nth-child(3) .stage-link { color: var(--c3); }
+    .stage-card:nth-child(4) .stage-link { color: var(--c4); }
+
+    .system-bottom { text-align: center; padding: 36px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .system-bottom p { font-size: 20px; font-weight: 500; color: var(--ink); line-height: 1.55; }
+    .btn-cyan {
+      display: inline-flex; align-items: center; gap: 8px; padding: 15px 34px;
+      background: var(--cyan); color: var(--navy); font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+      border-radius: 100px; box-shadow: 0 4px 20px rgba(0,180,230,0.3); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-cyan:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,180,230,0.4); }
+
+    /* ══ OUR CORE SERVICES ══ */
+    .core-services-section { background: var(--white); padding: 100px 60px; }
+    .cs-inner { max-width: 1280px; margin: 0 auto; }
+    .cs-header { margin-bottom: 48px; }
+    .cs-header h2 { font-size: clamp(30px, 3.5vw, 48px); font-weight: 700; color: var(--ink); letter-spacing: -0.5px; line-height: 1.05; margin-bottom: 12px; }
+    .cs-header-sub { font-size: 16px; color: var(--muted); line-height: 1.6; }
+
+    .cs-grid { display: flex; gap: 16px; align-items: stretch; }
+    .cs-card {
+      background: var(--navy); border-radius: 20px; padding: 36px 28px;
+      display: flex; flex-direction: column; flex: 1; min-width: 0;
+      transition: flex 0.38s cubic-bezier(0.4,0,0.2,1), box-shadow 0.28s ease, transform 0.28s ease;
+      cursor: pointer;
+    }
+    .cs-card:hover { flex: 1.6; box-shadow: 0 20px 52px rgba(15,27,48,0.22); transform: translateY(-4px); }
+    .cs-grid:has(.cs-card:hover) .cs-card:not(:hover) { flex: 0.82; }
+    .cs-icon {
+      width: 46px; height: 46px; border-radius: 12px; margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.1);
+    }
+    .cs-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--cyan); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-card h3 { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 0; margin-bottom: 12px; }
+    .cs-card p { font-size: 13.5px; line-height: 1.75; color: rgba(255,255,255,0.55); flex: 1; margin-bottom: 28px; }
+    .cs-arr {
+      width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center; margin-top: auto;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cs-card:hover .cs-arr { border-color: var(--cyan); background: rgba(0,180,230,0.12); }
+    .cs-arr svg { width: 14px; height: 14px; fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .cs-card:hover .cs-arr svg { stroke: var(--cyan); }
+
+    /* ══ TESTIMONIALS ══ */
+    .testimonials-section { background: var(--light); padding: 100px 60px; }
+    .testimonials-inner { max-width: 1280px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; }
+    .section-title { font-size: clamp(26px, 3vw, 40px); font-weight: 700; color: var(--ink); letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 48px; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testimonial-card {
+      background: var(--white); border-radius: 20px; padding: 36px 30px;
+      display: flex; flex-direction: column; gap: 18px;
+      box-shadow: 0 2px 10px rgba(15,27,48,0.05);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .testimonial-card:hover { box-shadow: 0 16px 48px rgba(15,27,48,0.1); transform: translateY(-4px); }
+    .tc-client-logo { height: 32px; object-fit: contain; object-position: left; }
+    .tc-stars { display: flex; gap: 2px; }
+    .tc-stars svg { width: 15px; height: 15px; fill: #FBBC05; }
+    .tc-quote { font-size: 14.5px; color: var(--ink); line-height: 1.78; flex: 1; }
+    .tc-quote em { font-style: normal; color: var(--cyan); font-weight: 600; }
+    .tc-author { display: flex; align-items: center; justify-content: space-between; padding-top: 14px; border-top: 1px solid #eef1f6; }
+    .tc-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .tc-title { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .tc-g { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--muted); }
+    .g-icon { width: 16px; height: 16px; }
+
+    /* ══ STATS BAR ══ */
+    .stats-bar { background: var(--navy2); padding: 68px 60px; }
+    .stats-bar-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.1); }
+    .stat-item:last-child { border-right: none; }
+    .stat-icon svg { width: 38px; height: 38px; stroke: var(--cyan); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .stat-num { font-family: 'Inter', sans-serif; font-size: 64px; font-weight: 800; color: #fff; letter-spacing: -2px; line-height: 1; }
+    .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); text-align: center; }
+
+    /* ══ SINCE 2010 ══ */
+    .since-section { background: var(--navy2); padding: 68px 60px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .since-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .since-left h2 { font-family: 'Inter', sans-serif; font-size: clamp(22px, 2.5vw, 32px); font-weight: 600; color: #fff; line-height: 1.35; letter-spacing: -0.2px; }
+    .since-right p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+
+    /* ══ THOUGHT LEADERS ══ */
+    .thought-leaders-bar { background: #060e1a; padding: 28px 60px; }
+    .thought-leaders-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 40px; }
+    .tl-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); white-space: nowrap; }
+    .tl-div { flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+    .tl-logos { display: flex; align-items: center; gap: 36px; }
+    .tl-logo { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 700; color: rgba(255,255,255,0.42); letter-spacing: -0.2px; }
+
+    /* ══ AWARDS ══ */
+    .awards-section { background: var(--white); padding: 100px 60px; }
+    .awards-inner { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .award-row {
+      display: grid; grid-template-columns: 200px 1fr; gap: 64px; align-items: center;
+      padding: 56px 0; border-bottom: 1px solid #eef1f6;
+    }
+    .award-row:first-child { padding-top: 0; }
+    .award-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .award-row.reverse { grid-template-columns: 1fr 200px; }
+    .award-row.reverse .award-img { order: 2; }
+    .award-row.reverse .award-copy { order: 1; }
+    .award-img { display: flex; align-items: center; justify-content: center; }
+    .award-img img { max-width: 150px; max-height: 150px; object-fit: contain; }
+    .award-source { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    .award-copy h3 { font-family: 'Inter', sans-serif; font-size: clamp(18px, 2vw, 24px); font-weight: 700; color: var(--ink); letter-spacing: -0.2px; line-height: 1.3; margin-bottom: 10px; }
+    .award-copy p { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
+
+    /* ══ CTA BANNER ══ */
+    .cta-banner { padding: 36px 60px 60px; }
+    .cta-banner-inner {
+      max-width: 1280px; margin: 0 auto;
+      background: linear-gradient(130deg, #0d2240 0%, #152e55 100%);
+      border-radius: 20px; padding: 60px 64px;
+      display: flex; align-items: center; justify-content: space-between; gap: 48px;
+    }
+    .cta-banner-left h2 { font-family: 'Inter', sans-serif; font-size: clamp(22px, 2.8vw, 36px); font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.15; margin-bottom: 14px; }
+    .cta-banner-left p { font-size: 16px; color: var(--cyan); font-weight: 400; line-height: 1.65; }
+    .cta-banner-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
+    .btn-white { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700; border-radius: 100px; letter-spacing: 0.3px; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border: 1.5px solid rgba(255,255,255,0.3); color: #fff; font-size: 14px; font-weight: 600; border-radius: 100px; transition: border-color 0.2s, background 0.2s; }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.65); background: rgba(255,255,255,0.07); }
+
+    /* ══ FOOTER ══ */
+    .footer { background: var(--navy2); padding: 68px 60px 36px; }
+    .footer-inner { max-width: 1280px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-desc { font-size: 13.5px; color: rgba(255,255,255,0.38); line-height: 1.75; margin-top: 18px; max-width: 280px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; }
+    .footer-social a:hover { border-color: var(--cyan); background: rgba(0,180,230,0.1); }
+    .footer-social svg { width: 15px; height: 15px; fill: rgba(255,255,255,0.5); }
+    .footer-phone { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+    .footer-phone span { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: 0.3px; }
+    .btn-lets-talk { display: inline-flex; padding: 10px 22px; background: var(--cyan); color: var(--navy); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 100px; transition: opacity 0.2s; }
+    .btn-lets-talk:hover { opacity: 0.88; }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .btn-payments { display: inline-flex; padding: 10px 22px; margin-top: 20px; border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 100px; transition: border-color 0.2s, color 0.2s; }
+    .btn-payments:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.07); }
+    .footer-bottom p { font-size: 12.5px; color: rgba(255,255,255,0.25); }
+    .footer-bottom a { color: rgba(255,255,255,0.3); transition: color 0.2s; }
+    .footer-bottom a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- ════ NAV ════ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img src="dp_logo.png" alt="DigitalParc" style="height:36px;width:auto;" />
+    </a>
+    <div class="nav-links">
+      <a href="https://www.digitalparc.com/growth-system/">Growth System</a>
+      <a href="https://www.digitalparc.com/seo/">SEO</a>
+      <a href="https://www.digitalparc.com/paid-advertising/">Paid Advertising</a>
+      <a href="https://www.digitalparc.com/website-design/">Website Design</a>
+      <a href="https://www.digitalparc.com/work/">Work</a>
+      <a href="https://www.digitalparc.com/about/">About</a>
+      <a href="#" class="nav-cta">How Can We Help?</a>
+    </div>
+  </nav>
+
+  <!-- ════ HERO — RESULTS DRIVEN ════ -->
+  <section class="hero">
+    <div class="hero-bg-fallback"></div>
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <h1 class="reveal">Results Driven</h1>
+      <div class="hero-sub reveal reveal-delay-1">
+        <span>Design</span><span class="sep">/</span>
+        <span>Development</span><span class="sep">/</span>
+        <span>Marketing</span><span class="sep">/</span>
+        <span>SEO</span>
+      </div>
+      <a href="https://www.digitalparc.com/growth-system/" class="hero-cta reveal reveal-delay-2">See the Growth System</a>
+    </div>
+    <div class="hero-scroll">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ════ BUILD A PREDICTABLE ENGINE FOR GROWTH ════ -->
+  <section class="growth-section">
+    <div class="growth-inner">
+      <div class="growth-video-wrap reveal" id="videoWrap">
+        <img src="Group-17785-1.png" alt="The Growth System You Need For Driving Leads and Revenue" onerror="this.src='https://img.youtube.com/vi/POQOonR17gM/maxresdefault.jpg'" />
+        <div class="video-play-btn" id="playBtn">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      </div>
+      <div class="growth-right">
+        <h2 class="reveal">Build a Predictable Engine for Growth</h2>
+        <p class="reveal reveal-delay-1">DigitalParc is a growth marketing agency focused on helping businesses generate more qualified leads, increase customer acquisition, and drive measurable revenue growth.</p>
+        <p class="reveal reveal-delay-1">Our proprietary Growth System combines AI Search Optimization, SEO, paid advertising, conversion optimization, and performance analytics into one coordinated strategy designed to produce consistent business growth—not just more website traffic.</p>
+        <p class="reveal reveal-delay-2">Today's most successful companies don't rely on one marketing channel. They implement a <strong>multi-channel Growth System</strong> that continuously attracts, converts, and nurtures new customers.</p>
+        <ul class="growth-checklist reveal reveal-delay-2">
+          <li><span class="check-dot"></span>AI Search Optimization &amp; SEO (build long-term visibility)</li>
+          <li><span class="check-dot"></span>Google Ads (capture buying intent)</li>
+          <li><span class="check-dot"></span>Meta Ads (create demand)</li>
+          <li><span class="check-dot"></span>Conversion Optimization (turn traffic into revenue)</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TRUST BAR ════ -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <img src="Google-Five-Star-Review-Benchmark-PNG.png" alt="Google 5-Star Reviews" />
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <img src="Google-Partner-Logo-Vector1.png" alt="Google Partner" />
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <img src="meta-verified1.png" alt="Meta Verified" />
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-badges">
+        <img src="expertise1-25-1.png" alt="Expertise.com Best 2025" />
+        <img src="expertise1-24-1.png" alt="Expertise.com Best 2024" />
+        <img src="expertise1-23-1.png" alt="Expertise.com Best 2023" />
+        <img src="expertise1-22-1.png" alt="Expertise.com Best 2022" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ THIS IS THE SYSTEM ════ -->
+  <section class="system-section">
+    <div class="system-inner">
+      <div class="system-header">
+        <h2 class="reveal">This is the System</h2>
+        <p class="reveal reveal-delay-1">Every stage plays a role. Every service connects into it.</p>
+      </div>
+
+      <div class="arrow-strip reveal reveal-delay-1">
+        <div class="arrow-step"><span class="arrow-num">1</span><span class="arrow-label">Build Visibility</span></div>
+        <div class="arrow-step"><span class="arrow-num">2</span><span class="arrow-label">Capture Demand</span></div>
+        <div class="arrow-step"><span class="arrow-num">3</span><span class="arrow-label">Convert Traffic</span></div>
+        <div class="arrow-step"><span class="arrow-num">4</span><span class="arrow-label">Optimize &amp; Scale</span></div>
+      </div>
+
+      <div class="pipeline">
+        <div class="stage-card reveal">
+          <h3>If people can't find you, nothing else matters.</h3>
+          <p class="stage-body">We position your business where decisions are being made, across search, AI platforms, and high-visibility channels.</p>
+          <div class="stage-rule"></div>
+          <ul>
+            <li><span class="li-dot"></span>SEO &amp; AI Search Visibility</li>
+            <li><span class="li-dot"></span>Content Strategy</li>
+            <li><span class="li-dot"></span>Local SEO / Listings</li>
+            <li><span class="li-dot"></span>Authority Building</li>
+          </ul>
+          <a href="https://www.digitalparc.com/seo/" class="stage-link">Explore Visibility →</a>
+        </div>
+        <div class="stage-card reveal reveal-delay-1">
+          <h3>Visibility without action is wasted opportunity.</h3>
+          <p class="stage-body">We turn attention into qualified leads through targeted campaigns and strategic messaging.</p>
+          <div class="stage-rule"></div>
+          <ul>
+            <li><span class="li-dot"></span>Paid Ads (Google, Meta)</li>
+            <li><span class="li-dot"></span>Demand Generation Campaigns</li>
+            <li><span class="li-dot"></span>Landing Pages for Campaigns</li>
+            <li><span class="li-dot"></span>Audience Targeting &amp; Creative</li>
+          </ul>
+          <a href="https://www.digitalparc.com/paid-advertising/" class="stage-link">Explore Demand →</a>
+        </div>
+        <div class="stage-card reveal reveal-delay-2">
+          <h3>Traffic means nothing if it doesn't convert.</h3>
+          <p class="stage-body">We optimize your website, messaging, and funnels to turn visitors into real revenue.</p>
+          <div class="stage-rule"></div>
+          <ul>
+            <li><span class="li-dot"></span>Website Design &amp; Development</li>
+            <li><span class="li-dot"></span>Conversion Rate Optimization</li>
+            <li><span class="li-dot"></span>Messaging &amp; UX Improvements</li>
+            <li><span class="li-dot"></span>Funnel Optimization</li>
+          </ul>
+          <a href="https://www.digitalparc.com/website-design/" class="stage-link">Explore Conversion →</a>
+        </div>
+        <div class="stage-card reveal reveal-delay-3">
+          <h3>Growth comes from refining what works.</h3>
+          <p class="stage-body">We use data, testing, and iteration to turn your marketing into a predictable, scalable system.</p>
+          <div class="stage-rule"></div>
+          <ul>
+            <li><span class="li-dot"></span>Analytics &amp; Tracking</li>
+            <li><span class="li-dot"></span>A/B Testing</li>
+            <li><span class="li-dot"></span>Performance Optimization</li>
+            <li><span class="li-dot"></span>Growth Strategy &amp; Forecasting</li>
+          </ul>
+          <a href="https://www.digitalparc.com/growth-system/" class="stage-link">Explore Scaling →</a>
+        </div>
+      </div>
+
+      <div class="system-bottom reveal">
+        <p>This isn't just a collection of services.<br>It's a system designed to grow your business.</p>
+        <a href="#" class="btn-cyan">Schedule a Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ OUR CORE SERVICES ════ -->
+  <section class="core-services-section">
+    <div class="cs-inner">
+      <div class="cs-header">
+        <h2 class="reveal">Our Core Services</h2>
+        <p class="cs-header-sub reveal reveal-delay-1">Four core capabilities, one connected system. Every engagement is built around what your business needs to grow.</p>
+      </div>
+      <div class="cs-grid">
+        <div class="cs-card reveal">
+          <div class="cs-icon">
+            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <h3>Growth System</h3>
+          <p>Align marketing, sales, and data into a clear roadmap focused on sustainable, measurable business growth.</p>
+          <a href="https://www.digitalparc.com/growth-system/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="cs-card reveal reveal-delay-1">
+          <div class="cs-icon">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>SEO</h3>
+          <p>Build consistent pipeline by creating awareness, capturing interest, and turning it into qualified opportunities.</p>
+          <a href="https://www.digitalparc.com/seo/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="cs-card reveal reveal-delay-2">
+          <div class="cs-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Websites</h3>
+          <p>Create high-performing websites that look sharp, load fast, and are built to convert from the ground up.</p>
+          <a href="https://www.digitalparc.com/website-design/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="cs-card reveal reveal-delay-3">
+          <div class="cs-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Paid Advertising</h3>
+          <p>Drive immediate, high-intent traffic through targeted ad campaigns designed to convert and scale efficiently.</p>
+          <a href="https://www.digitalparc.com/paid-advertising/" class="cs-arr"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TESTIMONIALS ════ -->
+  <section class="testimonials-section">
+    <div class="testimonials-inner">
+      <p class="section-label reveal">Client Results</p>
+      <h2 class="section-title reveal reveal-delay-1">What Our Clients Say</h2>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <img src="TectaAmerica_RoofingRedefined_Logo-1.png" alt="Tecta America" class="tc-client-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+          <div style="display:none;font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--ink);">TECTA AMERICA</div>
+          <div class="tc-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="tc-quote">DigitalParc has completely revolutionized <em>our online presence</em> and digital marketing approach, propelling our level of online professionalism to new heights.</p>
+          <div class="tc-author">
+            <div><div class="tc-name">Jessica Meyer</div><div class="tc-title">Head of Marketing</div></div>
+            <div class="tc-g">
+              <svg class="g-icon" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              5.0 ★
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-1">
+          <img src="logo.png" alt="Gopher State Seamless Gutters" class="tc-client-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+          <div style="display:none;font-family:'Inter',sans-serif;font-size:14px;font-weight:800;color:#e87722;">GOPHER STATE SEAMLESS GUTTERS</div>
+          <div class="tc-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="tc-quote">I have been struggling with websites and SEO for years. Andrew and the team jumped on web design and the SEO so fast they <em>tripled my leads</em> in a matter of months!</p>
+          <div class="tc-author">
+            <div><div class="tc-name">Caleb Turner</div><div class="tc-title">Owner &amp; Operator</div></div>
+            <div class="tc-g">
+              <svg class="g-icon" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              5.0 ★
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal reveal-delay-2">
+          <img src="total-spine-yoast-image.png" alt="Total Spine" class="tc-client-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
+          <div style="display:none;font-family:'Inter',sans-serif;font-size:16px;font-weight:800;color:var(--blue);">TOTAL SPINE</div>
+          <div class="tc-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="tc-quote">DigitalParc has knocked it out of the park in terms of communication, consistency, quality and follow through. By far the <em>best experience</em> I've had with a web company.</p>
+          <div class="tc-author">
+            <div><div class="tc-name">Brent Tieri</div><div class="tc-title">Owner &amp; Chiropractor</div></div>
+            <div class="tc-g">
+              <svg class="g-icon" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+              5.0 ★
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ STATS BAR ════ -->
+  <section class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item reveal">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="stat-num">97%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="stat-num">793</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="stat-num">17+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="stat-num">12</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SINCE 2010 ════ -->
+  <section class="since-section">
+    <div class="since-inner">
+      <div class="since-left reveal">
+        <h2>We know internet marketing and have been in the game since 2010.</h2>
+      </div>
+      <div class="since-right reveal reveal-delay-1">
+        <p>We pride ourselves on our hard work and dedication, but also on our ability to collaborate with our clients to deliver a full-service digital marketing strategy that's incredibly effective. We know just how important your business is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ THOUGHT LEADERS BAR ════ -->
+  <div class="thought-leaders-bar">
+    <div class="thought-leaders-inner">
+      <span class="tl-label">Industry Thought Leaders On</span>
+      <span class="tl-div"></span>
+      <div class="tl-logos">
+        <span class="tl-logo">UpCity</span>
+        <span class="tl-logo">Clutch</span>
+        <span class="tl-logo">OnBaze</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ AWARDS ════ -->
+  <section class="awards-section">
+    <div class="awards-inner">
+
+      <div class="award-row reveal">
+        <div class="award-img">
+          <img src="expertise1-25-1.png" alt="Expertise.com Best Digital Marketing 2025" onerror="this.style.display='none'" />
+        </div>
+        <div class="award-copy">
+          <div class="award-source">Expertise.com</div>
+          <h3>Best Digital Marketing Agencies in Minneapolis 2025</h3>
+          <p>DigitalParc received this award from Expertise thanks to our continued proficiency in Digital Marketing and the results seen by our clients. We specialize in being a true full-service Digital Marketing Agency handling the entire process for our clients. From Website Design, SEO, Email Marketing, PPC Campaigns and more, DigitalParc is ready to provide exceptional service for your business.</p>
+        </div>
+      </div>
+
+      <div class="award-row reverse reveal">
+        <div class="award-copy">
+          <div class="award-source">Clutch.com</div>
+          <h3>Top Email Marketing Company in Minneapolis 2025</h3>
+          <p>We have been consistently one of the top Email Marketing agencies on Clutch, once again receiving this recognition in 2025 for the third year in a row. Our years of experience and commitment to delivering creative and engaging email marketing campaigns for our clients is what sets us apart. Our email marketing strategies have helped many of our clients reinvigorate their businesses with new leads.</p>
+        </div>
+        <div class="award-img">
+          <img src="Group-6186.png" alt="Clutch Top Email Marketing Company Minneapolis 2025" onerror="this.style.display='none'" />
+        </div>
+      </div>
+
+      <div class="award-row reveal">
+        <div class="award-img">
+          <img src="expertise1-25-1.png" alt="Expertise.com Best PPC Agencies 2025" onerror="this.style.display='none'" />
+        </div>
+        <div class="award-copy">
+          <div class="award-source">Expertise.com</div>
+          <h3>Best Pay-Per-Click (PPC) Agencies in Minneapolis 2025</h3>
+          <p>DigitalParc continues to deliver quality leads and results for our clients through PPC campaigns, which helped us earn a spot as one of the best PPC Agencies in Minneapolis in 2022, 2023, 2024 and 2025. We have the proper tools to determine the best paid ads strategies that will drive quality leads and business to your company.</p>
+        </div>
+      </div>
+
+      <div class="award-row reverse reveal">
+        <div class="award-copy">
+          <div class="award-source">UpCity.com</div>
+          <h3>Top SEO Agency in Minneapolis 2025</h3>
+          <p>We are proud to be named not only one of the top SEO service providers in Minneapolis, but one of the best SEO companies nationwide on UpCity since 2021. Our commitment to best practice in our optimization work keeps our clients' rankings high, leading to new business flowing in. From local to national SEO, on- and off-page optimization, Google Business Profile optimization and more, DigitalParc is ready to transform your digital presence.</p>
+        </div>
+        <div class="award-img">
+          <img src="new-badge20211005-28345-rogqj.png" alt="UpCity Top SEO Agency" onerror="this.style.display='none'" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════ CTA BANNER ════ -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner reveal">
+      <div class="cta-banner-left">
+        <h2>You Don't Need More Marketing.<br>You Need a System.</h2>
+        <p>We build it. We connect it. We optimize it.<br>So your business can grow.</p>
+      </div>
+      <div class="cta-banner-actions">
+        <a href="#" class="btn-white">Schedule a Call</a>
+        <a href="https://www.digitalparc.com/growth-system/" class="btn-outline-white">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <img src="dp_logo.png" alt="DigitalParc" style="height:36px;width:auto;" />
+          <p class="footer-brand-desc">Growth marketing built around results. SEO, paid advertising, website design, and strategy — connected into one system.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="var(--navy2)"/></svg></a>
+          </div>
+          <div class="footer-phone">
+            <span>612.845.5590</span>
+            <a href="#" class="btn-lets-talk">LET'S TALK</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="https://www.digitalparc.com/growth-system/">Growth System</a></li>
+            <li><a href="https://www.digitalparc.com/seo/">SEO</a></li>
+            <li><a href="https://www.digitalparc.com/website-design/">Website Design</a></li>
+            <li><a href="https://www.digitalparc.com/paid-advertising/">Paid Advertising</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="https://www.digitalparc.com/about/">About</a></li>
+            <li><a href="#">Franchise</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Insights</a></li>
+            <li><a href="#">Podcast</a></li>
+          </ul>
+          <a href="#" class="btn-payments">PAYMENTS</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>©2026 DigitalParc LLC. All Rights Reserved | <a href="#">Privacy Policy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero bg — load the actual image; fallback gradient stays visible until it loads
+    const heroBg = document.getElementById('heroBg');
+    const bgImg = new Image();
+    bgImg.onload = () => { heroBg.style.backgroundImage = `url('${bgImg.src}')`; };
+    bgImg.src = 'hero-bg.jpg';
+
+    // Video click-to-play
+    const videoWrap = document.getElementById('videoWrap');
+    if (videoWrap) {
+      videoWrap.addEventListener('click', () => {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/POQOonR17gM?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media'; iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+        videoWrap.innerHTML = ''; videoWrap.appendChild(iframe);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -75,9 +75,12 @@ p.sb{color:var(--gray);font-size:1rem;line-height:1.75;max-width:500px;}
 /* ─────────────────────────────────────
    HERO A — TWO COLUMN
 ───────────────────────────────────── */
-.hero-a{min-height:100vh;display:grid;grid-template-columns:1.05fr 0.95fr;align-items:center;padding:108px var(--pad) 80px;position:relative;overflow:hidden;gap:28px;}
+.hero-a{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;}
 
 /* bg layers */
+
+/* inner grid — max-width constrained so content is always centered */
+.hero-grid{max-width:var(--max-w);width:100%;margin:0 auto;padding:108px var(--pad) 80px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;position:relative;z-index:2;}
 .hero-a::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 80% 50%,rgba(59,130,246,.08) 0%,transparent 65%),radial-gradient(ellipse 45% 55% at 15% 25%,rgba(99,102,241,.05) 0%,transparent 55%);pointer-events:none;}
 .hero-a::after{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 85% 85% at 58% 40%,black 20%,transparent 78%);opacity:.35;pointer-events:none;}
 
@@ -88,12 +91,12 @@ p.sb{color:var(--gray);font-size:1rem;line-height:1.75;max-width:500px;}
 .hp3{width:5px;height:5px;background:var(--cyan);opacity:.18;top:40%;left:70%;animation:drift 10s ease-in-out infinite 6s;}
 .hp4{width:3px;height:3px;background:var(--blue2);opacity:.22;top:78%;left:62%;animation:drift 14s ease-in-out infinite 1s;}
 
-.hero-left{position:relative;z-index:2;max-width:580px;}
+.hero-left{position:relative;z-index:2;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-dim);border:1px solid var(--blue-border);color:var(--blue2);font-size:0.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:28px;}
 .pulse-dot{width:6px;height:6px;background:var(--blue);border-radius:50%;position:relative;flex-shrink:0;}
 .pulse-dot::after{content:'';position:absolute;inset:-3px;border-radius:50%;background:var(--blue);opacity:.4;animation:pulse 2s ease-in-out infinite;}
 
-.hero-h1{font-family:var(--font-h);font-size:clamp(2.8rem,4.2vw,5rem);font-weight:700;line-height:1.04;letter-spacing:-.035em;margin-bottom:22px;}
+.hero-h1{font-family:var(--font-h);font-size:clamp(2.6rem,3.6vw,4.4rem);font-weight:700;line-height:1.04;letter-spacing:-.035em;margin-bottom:22px;}
 .grad-text{background:linear-gradient(135deg,#60a5fa 0%,#818cf8 50%,#22d3ee 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 4s ease-in-out infinite;}
 
 /* rotating word ticker */
@@ -106,8 +109,8 @@ p.sb{color:var(--gray);font-size:1rem;line-height:1.75;max-width:500px;}
 .hero-trust-dot{width:3px;height:3px;background:var(--gray2);border-radius:50%;}
 
 /* ── HERO RIGHT: IMAGE + FLOATING CARDS ── */
-.hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-end;}
-.hero-visual{position:relative;width:100%;max-width:520px;height:480px;margin:0 auto;}
+.hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-start;}
+.hero-visual{position:relative;width:100%;max-width:540px;height:490px;}
 
 /* glow orbs */
 .hv-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px);}
@@ -452,22 +455,37 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
 /* ─────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────── */
-@media(min-width:1400px){:root{--pad:80px;}.hero-a{padding:112px var(--pad) 90px;}}
+@media(min-width:1400px){:root{--pad:80px;}.hero-grid{padding:112px var(--pad) 90px;}}
 @media(min-width:1600px){:root{--max-w:1440px;--pad:100px;}}
+
+/* ── 1280px: tighten system grid and service cards ── */
+@media(max-width:1280px){
+  .system-grid{grid-template-columns:repeat(2,1fr);}
+  .sc-bignum{font-size:2.8rem;}
+  .nav-links{gap:20px;}
+  .nav-links a{font-size:.78rem;}
+  .hero-visual{height:440px;}
+  .hv-img{top:30px;left:30px;right:30px;bottom:30px;}
+}
 @media(max-width:1200px){
   :root{--pad:48px;}
-  .hero-a{gap:24px;}
+  .hero-grid{gap:6px;}
   .hv-card-tr,.hv-card-bl{display:none;}
+}
+
+@media(max-width:1100px){
+  .nav-links{gap:14px;}
+  .nav-links a{font-size:.74rem;}
 }
 @media(max-width:1024px){
   :root{--pad:36px;}
-  .hero-a{grid-template-columns:1fr;padding:96px var(--pad) 64px;text-align:center;}
+  .hero-grid{grid-template-columns:1fr;padding:96px var(--pad) 64px;text-align:center;}
   .hero-left{max-width:none;margin:0 auto;}
   .hero-actions,.hero-trust{justify-content:center;}
   .hero-right{display:none;}
   .hero-b-content{padding:120px var(--pad) 80px;}
   .growth-grid{grid-template-columns:1fr;gap:40px;}
-  .system-grid{grid-template-columns:1fr 1fr;}
+  .system-grid{grid-template-columns:1fr 1fr;row-gap:1px;}
   .sys-pipeline{display:none;}
   .services-grid{grid-template-columns:1fr;}
   .work-grid{grid-template-columns:1fr 1fr;}
@@ -479,10 +497,16 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
   .cta-btns{flex-direction:row;justify-content:center;}
   .awards-grid{grid-template-columns:1fr 1fr;}
 }
+
+@media(max-width:900px){
+  .hbs-n{font-size:1.6rem;}
+  .hero-b-stats{flex-wrap:wrap;}
+  .hbs{min-width:44%;border-bottom:1px solid var(--border2);}
+}
 @media(max-width:768px){
   :root{--pad:20px;}
   nav{padding:0 20px;}.nav-links{display:none;}
-  .hero-a{padding:88px 20px 56px;}
+  .hero-grid{padding:88px 20px 56px;}
   .hero-b-content{padding:110px 20px 72px;}
   .work-grid{grid-template-columns:1fr;}
   .system-grid{grid-template-columns:1fr;}
@@ -503,6 +527,26 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
   .hero-toggle{bottom:16px;right:16px;}
   .stats-grid{grid-template-columns:1fr 1fr;}
 }
+
+/* ── HEADLINE NOWRAP — prevents word-width reflow ── */
+/* forces "Build a [word]" onto one line — stays inline, <br> handles the break */
+.h1-nowrap{white-space:nowrap;}
+
+/* ── SERVICE CARD PLATFORM CHIPS ── */
+.svc2-platforms{position:absolute;bottom:12px;left:12px;right:12px;z-index:3;display:flex;flex-wrap:wrap;gap:5px;}
+.svc2-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;font-size:.62rem;font-weight:700;letter-spacing:.04em;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid;white-space:nowrap;}
+.chip-google{background:rgba(66,133,244,.18);border-color:rgba(66,133,244,.4);color:#a8c5ff;}
+.chip-gpt{background:rgba(16,163,127,.18);border-color:rgba(16,163,127,.4);color:#5eead4;}
+.chip-perplexity{background:rgba(99,102,241,.18);border-color:rgba(99,102,241,.4);color:#c4b5fd;}
+.chip-geo{background:rgba(8,145,178,.18);border-color:rgba(8,145,178,.4);color:#67e8f9;}
+.chip-meta{background:rgba(24,119,242,.18);border-color:rgba(24,119,242,.4);color:#93c5fd;}
+.chip-tiktok{background:rgba(254,44,85,.18);border-color:rgba(254,44,85,.35);color:#fca5a5;}
+.chip-linkedin{background:rgba(10,102,194,.18);border-color:rgba(10,102,194,.4);color:#93c5fd;}
+.chip-figma{background:rgba(162,89,255,.18);border-color:rgba(162,89,255,.4);color:#d8b4fe;}
+.chip-wp{background:rgba(33,117,155,.18);border-color:rgba(33,117,155,.4);color:#7dd3fc;}
+.chip-webflow{background:rgba(70,149,255,.18);border-color:rgba(70,149,255,.4);color:#bfdbfe;}
+.chip-adobe{background:rgba(255,0,0,.15);border-color:rgba(255,0,0,.3);color:#fca5a5;}
+.chip-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -535,9 +579,10 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
   <div class="hero-particle hp3"></div>
   <div class="hero-particle hp4"></div>
 
+  <div class="hero-grid">
   <div class="hero-left fade-up">
     <div class="hero-eyebrow"><span class="pulse-dot"></span>Growth Marketing Agency</div>
-    <h1 class="hero-h1">Build a <span class="grad-text" id="rotating-word">proven</span><br>engine for growth.</h1>
+    <h1 class="hero-h1"><span class="h1-nowrap">Build a <span class="grad-text" id="rotating-word">proven</span></span><br>engine for growth.</h1>
     <p class="hero-sub">We combine AI search, SEO, paid advertising, and conversion optimization into one connected system — designed to grow your revenue, not just your traffic.</p>
     <div class="hero-actions">
       <a href="#system" class="btn-primary">See the Growth System <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg></a>
@@ -607,6 +652,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
       </div>
     </div>
   </div>
+  </div><!-- /hero-grid -->
 </section>
 
 <!-- ─── HERO B — FULL BLEED VIDEO ─── -->
@@ -625,7 +671,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
 
   <div class="hero-b-content">
     <div class="hero-eyebrow" style="display:inline-flex;"><span class="pulse-dot"></span>Growth Marketing Agency</div>
-    <h1 class="hero-h1" style="margin-bottom:22px;">Build a <span class="grad-text" id="rotating-word-b">proven</span><br>engine for growth.</h1>
+    <h1 class="hero-h1" style="margin-bottom:22px;"><span class="h1-nowrap">Build a <span class="grad-text" id="rotating-word-b">proven</span></span><br>engine for growth.</h1>
     <p class="hero-sub" style="color:rgba(255,255,255,.75);max-width:580px;margin:0 auto 36px;">We combine AI search, SEO, paid advertising, and conversion optimization into one connected system — designed to grow your revenue, not just your traffic.</p>
     <div class="hero-actions" style="justify-content:center;">
       <a href="#system" class="btn-primary">See the Growth System <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9,4 13,8 9,12"/></svg></a>
@@ -829,7 +875,7 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
     </div>
     <div class="services-grid fade-up d1">
       <div class="svc2">
-        <div class="svc2-img"><img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=800&q=80" alt="Growth Strategy"/><div class="svc2-img-overlay"></div></div>
+        <div class="svc2-img"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=85" alt="Growth Strategy"/><div class="svc2-img-overlay"></div></div>
         <div class="svc2-body">
           <div class="svc2-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <h3>Growth System</h3>
@@ -838,7 +884,16 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
         </div>
       </div>
       <div class="svc2">
-        <div class="svc2-img"><img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80" alt="SEO"/><div class="svc2-img-overlay"></div></div>
+        <div class="svc2-img">
+          <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=85" alt="SEO & AI Search"/>
+          <div class="svc2-img-overlay"></div>
+          <div class="svc2-platforms">
+            <div class="svc2-chip chip-google"><div class="chip-dot" style="background:#4285F4;"></div>Google Search</div>
+            <div class="svc2-chip chip-gpt"><div class="chip-dot" style="background:#10a37f;"></div>ChatGPT</div>
+            <div class="svc2-chip chip-perplexity"><div class="chip-dot" style="background:#818cf8;"></div>Perplexity</div>
+            <div class="svc2-chip chip-geo"><div class="chip-dot" style="background:#22d3ee;"></div>GEO</div>
+          </div>
+        </div>
         <div class="svc2-body">
           <div class="svc2-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 7v1m0 6v1M7 11h1m6 0h1"/></svg></div>
           <h3>SEO &amp; AI Search</h3>
@@ -847,7 +902,16 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
         </div>
       </div>
       <div class="svc2">
-        <div class="svc2-img"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80" alt="Website Design"/><div class="svc2-img-overlay"></div></div>
+        <div class="svc2-img">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=85" alt="Website Design"/>
+          <div class="svc2-img-overlay"></div>
+          <div class="svc2-platforms">
+            <div class="svc2-chip chip-figma"><div class="chip-dot" style="background:#a259ff;"></div>Figma</div>
+            <div class="svc2-chip chip-wp"><div class="chip-dot" style="background:#21759b;"></div>WordPress</div>
+            <div class="svc2-chip chip-webflow"><div class="chip-dot" style="background:#4695ff;"></div>Webflow</div>
+            <div class="svc2-chip chip-adobe"><div class="chip-dot" style="background:#ff0000;"></div>Adobe XD</div>
+          </div>
+        </div>
         <div class="svc2-body">
           <div class="svc2-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="7" x2="22" y2="7"/></svg></div>
           <h3>Website Design</h3>
@@ -856,7 +920,16 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
         </div>
       </div>
       <div class="svc2">
-        <div class="svc2-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Paid Advertising"/><div class="svc2-img-overlay"></div></div>
+        <div class="svc2-img">
+          <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=85" alt="Paid Advertising"/>
+          <div class="svc2-img-overlay"></div>
+          <div class="svc2-platforms">
+            <div class="svc2-chip chip-google"><div class="chip-dot" style="background:#4285F4;"></div>Google Ads</div>
+            <div class="svc2-chip chip-meta"><div class="chip-dot" style="background:#1877f2;"></div>Meta Ads</div>
+            <div class="svc2-chip chip-tiktok"><div class="chip-dot" style="background:#fe2c55;"></div>TikTok Ads</div>
+            <div class="svc2-chip chip-linkedin"><div class="chip-dot" style="background:#0a66c2;"></div>LinkedIn</div>
+          </div>
+        </div>
         <div class="svc2-body">
           <div class="svc2-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <h3>Paid Advertising</h3>

@@ -352,7 +352,7 @@ html.show-about #page-about            { display:block !important; }
    PORTFOLIO / WORK
 ───────────────────────────────────── */
 .work-bg{background:linear-gradient(180deg,#06080f 0%,#0b1020 100%);border-top:1px solid rgba(255,255,255,.05);}
-.work-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;gap:24px;}
+.work-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;margin-top:40px;gap:24px;}
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 .work-card{border-radius:14px;overflow:hidden;border:1px solid var(--border2);background:var(--dark2);transition:border-color .25s,transform .3s,box-shadow .3s;position:relative;}
 .work-card:hover{border-color:var(--blue-border);transform:translateY(-6px);box-shadow:0 24px 56px rgba(0,0,0,.5),0 0 0 1px rgba(59,130,246,.1);}
@@ -1390,10 +1390,8 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
 <!-- ─── PORTFOLIO ─── -->
 <div class="work-bg" id="work" style="border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);">
   <div class="section-wrap">
-    <div class="work-header fade-up">
-      <div><div class="section-label">Work Examples</div><h2 class="sh">Built to Perform.</h2><p class="sb" style="white-space:nowrap;">We're in the results business. Greater visibility. More leads. Stronger revenue.</p></div>
-      <a href="#contact" class="btn-ghost btn-sparkle" onclick="openContact(event)">See More Work</a>
-    </div>
+    
+    <div class="section-label" style="margin-bottom:16px;">Work Examples</div>
     <div class="sc-spotlight fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:0 0 56px;margin-bottom:0;border-bottom:1px solid var(--border2);">
       <!-- Left: photo -->
       <div class="gm-right">
@@ -1439,6 +1437,12 @@ footer{background:var(--dark2);border-top:1px solid var(--border2);padding:64px 
     </div>
     <!-- Remaining work cards -->
     <!-- /work-grid -->
+
+    <!-- Built to Perform strip -->
+    <div class="work-header fade-up">
+      <div><h2 class="sh">Built to Perform.</h2><p class="sb" style="white-space:nowrap;">We're in the results business. Greater visibility. More leads. Stronger revenue.</p></div>
+      <a href="#contact" class="btn-ghost btn-sparkle" onclick="openContact(event)">See More Work</a>
+    </div>
 
     <!-- Gutter Maids Spotlight -->
     <div class="gm-spotlight fade-up">
